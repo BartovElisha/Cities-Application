@@ -1,1 +1,15 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+.icon-dark {
+  fill: white;
+}
+
+.mode-icon:hover {
+  cursor: pointer;
+}
+
+.rich-person-card:hover {
+  cursor: pointer;
+  background-color: gainsboro;
+  border-color: gainsboro;
+  border-width: 2px;
+}
+/*# sourceMappingURL=style.css.map */
