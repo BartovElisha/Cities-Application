@@ -10,10 +10,13 @@ function getCitiesCounter() {
 
 function getCitiesList() {
     let citiesArr = [];
+
+    let citiesCounter = getCitiesCounter();
+
     // Get Cities Keys from the LocalStorage
     if(citiesCounter == 0) {
         console.log("Memory slill Empty");
-        return;
+        return false;
     }
     else {
         for(let i = 0;i <= citiesCounter; i++) {
@@ -21,7 +24,9 @@ function getCitiesList() {
         }
     }
 
-    citiesArr.pop('citiesCounter');
+    // Remove 'citiesCounter' value from the citiesArr
+    let cityCounterIndex = citiesArr.indexOf('citiesCounter');
+    citiesArr.splice(cityCounterIndex,1);
 
     return citiesArr;
 }
@@ -30,10 +35,10 @@ function saveCityCounter(citiesCounter) {
     localStorage.setItem('citiesCounter',JSON.stringify(citiesCounter));
 }
 
-function saveCity(city) {
+function saveCityData(city) {
     localStorage.setItem(city.cityName,JSON.stringify(city));
 }
 
-function loadCity() {
-
+function getCityData(key) {
+    return JSON.parse(localStorage.getItem(key));
 }

@@ -19,7 +19,6 @@ function togleDisplayDarkLightMode() {
 }
 
 function generateNewCity() {
-    debugger;
     let newCity = new City();
 
     // Update City Index Value
@@ -39,7 +38,7 @@ function generateNewCity() {
     newCity.cityRating = '10';
 
     // Save New City to Local Storage
-    saveCity(newCity);
+    saveCityData(newCity);
 }
 
 function generateCityCard(cityIndex) {

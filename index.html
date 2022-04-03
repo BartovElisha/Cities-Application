@@ -146,14 +146,73 @@
                 <option value="Los Angeles">
                 <option value="Chicago">
             </datalist>
+        </div>
 
-            <!-- Cities Cards -->
+        <!-- Cities Cards -->
+        <br>
+        <div class="container">
             <div id="cities-container" class="row row-cols-4">
                 <!-- Cities container will be fill by JavaScript Code -->
                 <!-- ....... -->
+
+                <div id="col-card-${index}" class="col" onclick="removeRichCard('col-card-${index}')">
+                    <div class="card rich-person-card" style="width: 18rem;">
+                        <!-- <img src="..." class="card-img-top img-thumbnail" alt="${json_ar[index].name}"> -->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title">City:</h6>
+                                </div>
+                                <div class="col">
+                                    <span>${}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title">Country:</h6>
+                                </div>
+                                <div class="col">
+                                    <span>${}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title">Language:</h6>
+                                </div>
+                                <div class="col">
+                                    <span>${}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title">Population:</h6>
+                                </div>
+                                <div class="col">
+                                    <span>${}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title">Priority:</h6>
+                                </div>
+                                <div class="col">
+                                    <span>${}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="card-title">City Color:</h6>
+                                </div>
+                                <div class="col">
+                                    <div id="city-color" class="city-color-box" style="background-color: red;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-
     </main>
 
     <!-- Footer Section -->
@@ -180,6 +239,7 @@
 
     <!-- Local JavaScript Links -->
     <script src="./JavaScript/citiesClass.js"></script>
+    <script src="./JavaScript/DOM.js"></script>
     <script src="./JavaScript/localStorage.js"></script>
     <script src="./JavaScript/DOM.js"></script>
     <script src="./JavaScript/script.js"></script>
