@@ -14,7 +14,7 @@ class City {
     }
 
     // Constructor for City Name, City Country and City Language
-    constructor(cityIndex,cityImage,cityName,cityCountry,cityLanguage,cityColor,visitStatus) {
+    constructor(cityIndex,cityImage,cityName,cityCountry,cityLanguage,cityColor,visitStatus,cityRating) {
         this.cityIndex = cityIndex;
         this.cityImage = cityImage;
         this.cityName = cityName;
@@ -22,5 +22,6 @@ class City {
         this.cityLanguage = cityLanguage;
         this.cityColor = cityColor;
         this.visitStatus = visitStatus;
+        this.cityRating = cityRating;
     }
 }
