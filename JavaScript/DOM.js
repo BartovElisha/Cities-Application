@@ -21,15 +21,23 @@ function togleDisplayDarkLightMode() {
 function generateNewCity() {
     let newCity = new City();
 
-    // Update City Index Value
-    newCity.cityIndex = citiesCounter;    
+    // Get citiesCounter from localStorage
+    let citiesCounter = getCitiesCounter();
 
-    citiesCounter++;
-    saveCityCounter(citiesCounter);
-    
     // Get new City Data from input
-    newCity.cityImage = "https://media.istockphoto.com/photos/seascape-near-the-marina-in-israel-ashdod-picture-id471772741?s=612x612";
+    // Check if requered City name is valid
     newCity.cityName = document.getElementById('city-name').value;
+    if(newCity.cityName == "") {
+        return;
+    }
+
+    // Check if New City is not exist, increase and save citiesCounter
+    if(getCityData(newCity.cityName) == null) {
+        citiesCounter++;
+        saveCityCounter(citiesCounter);
+    }
+        
+    newCity.cityImage = "https://media.istockphoto.com/photos/seascape-near-the-marina-in-israel-ashdod-picture-id471772741?s=612x612";
     newCity.cityCountry = document.getElementById('city-country').value;
     newCity.cityLanguage = document.getElementById('city-language').value;
     newCity.cityPopulation = document.getElementById('city-population').value;
@@ -37,46 +45,25 @@ function generateNewCity() {
     newCity.visitStatus = document.querySelector('input[name = visitStatus]:checked').value;
     newCity.cityRating = '10';
 
+    // Update City Index Value
+    newCity.cityIndex = citiesCounter;    
+
     // Save New City to Local Storage
     saveCityData(newCity);
 }
 
-function generateCityCard(cityIndex) {
-    citiesContainerElement.innerHTML += 
-                `<div id="col-card-${index}" class="col" onclick="removeRichCard('col-card-${index}')">`+
-                    `<div class="card rich-person-card" style="width: 15rem;">`+
-                        `<img src="${json_ar[index].image}" class="card-img-top img-thumbnail" alt="${json_ar[index].name}">`+
+function generateCityCard(city) {
+    let template =
+                `<div id="col-card-${city.cityIndex}" class="col hide-city-card">`+
+                    `<div class="card city-card" style="width: 15rem;">`+
+                        //`<img src="..." class="card-img-top img-thumbnail" alt="...">`+
                         `<div class="card-body">`+
                             `<div class="row">`+
                                 `<div class="col">`+
-                                    `<h6 class="card-title">Name:</h6>`+
+                                    `<h6 class="card-title">City:</h6>`+
                                 `</div>`+
                                 `<div class="col">`+
-                                    `<span>${json_ar[index].name}</span>`+
-                                `</div>`+
-                            `</div>`+
-                            `<div class="row">`+
-                                `<div class="col">`+
-                                    `<h6 class="card-title">Worth:</h6>`+
-                                `</div>`+
-                                `<div class="col">`+
-                                    `<span>${json_ar[index].worth}</span>`+
-                                `</div>`+
-                            `</div>`+
-                            `<div class="row">`+
-                                `<div class="col">`+
-                                    `<h6 class="card-title">Birth Year:</h6>`+
-                                `</div>`+
-                                `<div class="col">`+
-                                    `<span>${json_ar[index].birth_year}</span>`+
-                                `</div>`+
-                            `</div>`+
-                            `<div class="row">`+
-                                `<div class="col">`+
-                                    `<h6 class="card-title">Source:</h6>`+
-                                `</div>`+
-                                `<div class="col">`+
-                                    `<span>${json_ar[index].source}</span>`+
+                                    `<span>${city.cityName}</span>`+
                                 `</div>`+
                             `</div>`+
                             `<div class="row">`+
@@ -84,10 +71,53 @@ function generateCityCard(cityIndex) {
                                     `<h6 class="card-title">Country:</h6>`+
                                 `</div>`+
                                 `<div class="col">`+
-                                    `<span>${json_ar[index].country}</span>`+
+                                    `<span>${city.cityCountry}</span>`+
+                                `</div>`+
+                            `</div>`+
+                            `<div class="row">`+
+                                `<div class="col">`+
+                                    `<h6 class="card-title">Language:</h6>`+
+                                `</div>`+
+                                `<div class="col">`+
+                                    `<span>${city.cityLanguage}</span>`+
+                                `</div>`+
+                            `</div>`+
+                            `<div class="row">`+
+                                `<div class="col">`+
+                                    `<h6 class="card-title">Population:</h6>`+
+                                `</div>`+
+                                `<div class="col">`+
+                                    `<span>${city.cityPopulationValue}</span>`+
+                                `</div>`+
+                            `</div>`+
+                            `<div class="row">`+
+                                `<div class="col">`+
+                                    `<h6 class="card-title">Priority:</h6>`+
+                                `</div>`+
+                                `<div class="col">`+
+                                    `<span>${city.visitStatus}</span>`+
+                                `</div>`+
+                            `</div>`+
+                            `<div class="row">`+
+                                `<div class="col">`+
+                                    `<h6 class="card-title">Rating:</h6>`+
+                                `</div>`+
+                                `<div class="col">`+
+                                    `<span>${city.cityRating}</span>`+
+                                `</div>`+
+                            `</div>`+
+                            `<div class="row">`+
+                                `<div class="col">`+
+                                    `<button type="button" class="btn btn-secondary">Update</button>`+
+                                `</div>`+
+                                `<div class="col">`+
+                                    `<input type="color" class="form-control form-control-color" id="city-color"
+                                        value="${city.cityColor}" title="Choose your color">`+
                                 `</div>`+
                             `</div>`+
                         `</div>`+
                     `</div>`+
                 `</div>`;
+
+    citiesContainerElement.innerHTML += template;
 }

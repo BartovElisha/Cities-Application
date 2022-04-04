@@ -3,7 +3,6 @@ Full Stack
 
 To Do List:
 - Add Stars rating 1 to 10 stars.
-- Add file localCtorage.js for saveNewCity(city).
 - Add file card.js for generate/remove html cards.
 - Add option to card:
     - close icon, to set display: none.
@@ -11,4 +10,5 @@ To Do List:
     - remove button.
 
 - Apdate Search list.
+- check overwrite city !!! 
 

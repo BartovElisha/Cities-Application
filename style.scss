@@ -6,18 +6,13 @@
   cursor: pointer; 
 }
 
-.rich-person-card:hover {
+.city-card:hover {
   cursor: pointer;
-  background-color: gainsboro;
-  border-color: gainsboro;
-  border-width: 2px;
+  // background-color: gainsboro;
+  // border-color: gainsboro;
+  // border-width: 2px;
 }
 
-.city-color-box {
-  display: block;
-  width: auto;
-  height: 25px;
-  border-radius: 5px;
-  border-color: gray;
-  border-width: 2px;
+.hide-city-card {
+    display: none;
 }

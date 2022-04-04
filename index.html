@@ -29,7 +29,6 @@
 
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="#" class="nav-link px-2 text-secondary">Welcome to Application City</a></li>
-                        <!-- <li><a href="#" class="nav-link px-2 text-secondary">About</a></li> -->
                     </ul>
 
                     <!-- Drop down -->
@@ -39,12 +38,16 @@
                             Menu
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#" onclick="showAllCities()">Show All Cities</a>
+                            <li><a class="dropdown-item" href="#" onclick="showAllCities(getCitiesList())">Show All
+                                    Cities</a>
+                            <li><a class="dropdown-item" href="#" onclick="hideAllCities(getCitiesList())">Hide All
+                                    Cities</a>
                             </li>
-                            <li><a class="dropdown-item" href="#" onclick="showAllCitiesRandomaly()">Show All Cities
-                                    Randomaly</a>
+                            <li><a class="dropdown-item" href="#" onclick="sortCitiesAz(getCitiesList())">Sort Cities
+                                    A..Z</a>
                             </li>
-                            <li><a class="dropdown-item" href="#" onclick="sortCitiesAz()">Sort Cities A..Z</a>
+                            <li><a class="dropdown-item" href="#" onclick="sortCitiesZa(getCitiesList())">Sort Cities
+                                    Z..A</a>
                             </li>
                             <li><a class="dropdown-item" href="#" onclick="showVisitedCities()">Show Visited Cities</a>
                             </li>
@@ -56,7 +59,7 @@
                             <li><a class="dropdown-item" href="#" onclick="showCitiesToNotVisit()">Show Cities to Not
                                     Visit</a>
                             </li>
-                            <li><a class="dropdown-item" href="#" onclick="clearAllCities()">Clear All Cities</a>
+                            <li><a class="dropdown-item" href="#" onclick="removeAllCities()">Delete All Cities</a>
                             </li>
                         </ul>
                     </div>
@@ -84,7 +87,7 @@
                         <br>
                         <div class="col">
                             <input type="text" class="form-control" id="city-name" placeholder="City Name"
-                                aria-label="City Name">
+                                aria-label="City Name" required>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="city-country" placeholder="City Country"
@@ -136,16 +139,18 @@
 
             <!-- Search City Section -->
             <br>
-            <label for="exampleDataList" class="form-label">Search City</label>
-            <input class="form-control" list="datalistOptions" id="exampleDataList"
-                placeholder="Type to search city...">
-            <datalist id="datalistOptions">
-                <option value="San Francisco">
-                <option value="New York">
-                <option value="Seattle">
-                <option value="Los Angeles">
-                <option value="Chicago">
-            </datalist>
+            <form class="d-flex">
+                <input class="form-control me-2" list="datalistOptions" placeholder="Search" aria-label="Search">
+                <datalist id="datalistOptions">
+                    <option value="San Francisco">
+                    <option value="New York">
+                    <option value="Seattle">
+                    <option value="Los Angeles">
+                    <option value="Chicago">
+                </datalist>
+
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
         </div>
 
         <!-- Cities Cards -->
@@ -154,10 +159,9 @@
             <div id="cities-container" class="row row-cols-4">
                 <!-- Cities container will be fill by JavaScript Code -->
                 <!-- ....... -->
-
-                <div id="col-card-${index}" class="col" onclick="removeRichCard('col-card-${index}')">
-                    <div class="card rich-person-card" style="width: 18rem;">
-                        <!-- <img src="..." class="card-img-top img-thumbnail" alt="${json_ar[index].name}"> -->
+                <!-- <div id="col-card-${index}" class="col hide-city-card">
+                    <div class="card city-card" style="width: 18rem;">
+                        <img src="..." class="card-img-top img-thumbnail" alt="...">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -201,15 +205,16 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <h6 class="card-title">City Color:</h6>
+                                    <button type="button" class="btn btn-secondary">Color</button>
                                 </div>
                                 <div class="col">
-                                    <div id="city-color" class="city-color-box" style="background-color: red;"></div>
+                                    <input type="color" class="form-control form-control-color" id="city-color"
+                                        value="#563d7c" title="Choose your color">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
