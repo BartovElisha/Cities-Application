@@ -1,13 +1,15 @@
-const citiesContainerElement = document.getElementById("cities-container");
-
 function generateAllCitiesCards(citiesArr) {
     let city = new City();
+
+    removeSearchDataList();
 
     // Display New List of Cities
     for(let i = 0;i < citiesArr.length;i++) {
         city = getCityData(citiesArr[i]);
         generateCityCard(city);
     }
+
+    generateSearchDataList(citiesArr);
 }
 
 function showAllCities(citiesArr) {
@@ -32,30 +34,20 @@ function hideAllCities(citiesArr) {
     }
 }
 
-function removeAllCitieasCardsElements(citiesArr) {
-    for(let i = 0;i < citiesArr.length;i++) {
-        let city = getCityData(citiesArr[i]);
-        cityCardElement = document.getElementById(`col-card-${city.cityIndex}`);
-        cityCardElement.remove();           
-    }
-}
-
 function sortCitiesAz(citiesArr) {
-    debugger;
     let tempArr = [...citiesArr];
     tempArr.sort();
 
-    removeAllCitieasCardsElements(citiesArr);
+    removeAllCitieasCardsElements();
     generateAllCitiesCards(tempArr);
     showAllCities(tempArr);
 }
 
 function sortCitiesZa(citiesArr) {
-    debugger;
     let tempArr = [...citiesArr];
     tempArr.sort(function(a, b){return b-a});    
 
-    removeAllCitieasCardsElements(citiesArr);
+    removeAllCitieasCardsElements();
     generateAllCitiesCards(tempArr);
     showAllCities(tempArr);
 }
@@ -85,9 +77,30 @@ function removeAllCities() {
     }
 }
 
-function searchCity() {
-    // TBD
+function showSerchedCityCards(serchedCity) {
+    let cityCardElement;
+    let city = new City();
+
+    city = getCityData(serchedCity);
+    generateCityCard(city);
+
+    cityCardElement = document.getElementById(`col-card-${city.cityIndex}`);
+    cityCardElement.classList.remove("hide-city-card");
+}
+
+function searchCity(citiesArr) {
+    let searchCityElement = document.getElementById("search-city");
+    let serchedCity = searchCityElement.value;
+
+    if(citiesArr.indexOf(serchedCity) == -1) {
+        alert("Sorry City Not Found");
+        return;
+    }
+
+    removeAllCitieasCardsElements();
+    showSerchedCityCards(serchedCity);
 }
 
 // Init
 generateAllCitiesCards(getCitiesList());
+sortCitiesAz(getCitiesList());

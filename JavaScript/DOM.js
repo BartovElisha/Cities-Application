@@ -37,7 +37,7 @@ function generateNewCity() {
         saveCityCounter(citiesCounter);
     }
         
-    newCity.cityImage = "https://media.istockphoto.com/photos/seascape-near-the-marina-in-israel-ashdod-picture-id471772741?s=612x612";
+    newCity.cityImage = "...";
     newCity.cityCountry = document.getElementById('city-country').value;
     newCity.cityLanguage = document.getElementById('city-language').value;
     newCity.cityPopulation = document.getElementById('city-population').value;
@@ -53,11 +53,14 @@ function generateNewCity() {
 }
 
 function generateCityCard(city) {
+    let citiesContainerElement = document.getElementById("cities-container");
+
     let template =
-                `<div id="col-card-${city.cityIndex}" class="col hide-city-card">`+
+                `<div id="col-card-${city.cityIndex}" class="col my-2 hide-city-card">`+
                     `<div class="card city-card" style="width: 15rem;">`+
                         //`<img src="..." class="card-img-top img-thumbnail" alt="...">`+
-                        `<div class="card-body">`+
+                        `<img src="./Images/lotte-world-tower-1791802_640.jpg" class="card-img-top img-thumbnail" alt="...">`+
+                        `<div class="card-body shadow">`+
                             `<div class="row">`+
                                 `<div class="col">`+
                                     `<h6 class="card-title">City:</h6>`+
@@ -120,4 +123,34 @@ function generateCityCard(city) {
                 `</div>`;
 
     citiesContainerElement.innerHTML += template;
+}
+
+function removeAllCitieasCardsElements() {
+    // Get citiesCounter from localStorage
+    let citiesCounter = getCitiesCounter();
+    
+    for(let i = 0;i <= citiesCounter;i++) {
+        if(document.getElementById(`col-card-${i}`)) {
+            let cityCardElement = document.getElementById(`col-card-${i}`);
+            cityCardElement.remove();    
+        }
+    }
+}
+
+function generateSearchDataList(citiesArr) {
+    let dataListElement = document.getElementById("datalistOptions");
+    
+    for(let i = 0;i < citiesArr.length;i++) {
+        dataListElement.innerHTML += `<option id="city-name-${i}" value="${citiesArr[i]}">`;        
+    }
+}
+
+function removeSearchDataList() {
+    // Removing all 'datalistOptions' elements if exist
+    let i = 0;
+    while(document.getElementById(`city-name-${i}`)) {
+        let cityNameElement = document.getElementById(`city-name-${i}`);
+        cityNameElement.remove();
+        i++;
+    }
 }
