@@ -14,14 +14,12 @@ class City {
     }
 
     // Constructor for City Name, City Country and City Language
-    constructor(cityIndex,cityImage,cityName,cityCountry,cityLanguage,cityColor,visitStatus,cityRating) {
-        this.cityIndex = cityIndex;
+    constructor(cityImage,cityName,cityCountry,cityLanguage,cityColor,visitStatus) {
         this.cityImage = cityImage;
         this.cityName = cityName;
         this.cityCountry = cityCountry;
         this.cityLanguage = cityLanguage;
         this.cityColor = cityColor;
         this.visitStatus = visitStatus;
-        this.cityRating = cityRating;
     }
 }

@@ -43,20 +43,16 @@ function generateNewCity() {
     newCity.cityPopulation = document.getElementById('city-population').value;
     newCity.cityColor = document.getElementById('city-color').value;
     newCity.visitStatus = document.querySelector('input[name = visitStatus]:checked').value;
-    newCity.cityRating = '10';
-
-    // Update City Index Value
-    newCity.cityIndex = citiesCounter;    
 
     // Save New City to Local Storage
     saveCityData(newCity);
 }
 
-function generateCityCard(city) {
+function generateCityCard(city,cityIndex) {
     let citiesContainerElement = document.getElementById("cities-container");
 
     let template =
-                `<div id="col-card-${city.cityIndex}" class="col my-2 hide-city-card">`+
+                `<div id="col-card-${cityIndex}" class="col my-2 hide-city-card">`+
                     `<div class="card city-card" style="width: 15rem;">`+
                         //`<img src="..." class="card-img-top img-thumbnail" alt="...">`+
                         `<img src="./Images/lotte-world-tower-1791802_640.jpg" class="card-img-top img-thumbnail" alt="...">`+
@@ -103,14 +99,6 @@ function generateCityCard(city) {
                             `</div>`+
                             `<div class="row">`+
                                 `<div class="col">`+
-                                    `<h6 class="card-title">Rating:</h6>`+
-                                `</div>`+
-                                `<div class="col">`+
-                                    `<span>${city.cityRating}</span>`+
-                                `</div>`+
-                            `</div>`+
-                            `<div class="row">`+
-                                `<div class="col">`+
                                     `<button type="button" class="btn btn-secondary">Update</button>`+
                                 `</div>`+
                                 `<div class="col">`+
@@ -123,6 +111,13 @@ function generateCityCard(city) {
                 `</div>`;
 
     citiesContainerElement.innerHTML += template;
+}
+
+function showCityCard(cityIndex) {
+    if(document.getElementById(`col-card-${cityIndex}`)) {
+        let cityCardElement = document.getElementById(`col-card-${cityIndex}`);
+        cityCardElement.classList.remove("hide-city-card");
+    }
 }
 
 function removeAllCitieasCardsElements() {
@@ -138,6 +133,10 @@ function removeAllCitieasCardsElements() {
 }
 
 function generateSearchDataList(citiesArr) {
+    if(citiesArr == false) {
+        return;
+    }
+    
     let dataListElement = document.getElementById("datalistOptions");
     
     for(let i = 0;i < citiesArr.length;i++) {

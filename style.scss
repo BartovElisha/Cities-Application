@@ -8,9 +8,9 @@
 
 .city-card:hover {
   cursor: pointer;
-  // background-color: gainsboro;
-  // border-color: gainsboro;
-  // border-width: 2px;
+  background-color: rgba($color: #e9dcdc, $alpha: 0.4);
+  //border-color: gainsboro;
+  border-width: 1px;
 }
 
 .hide-city-card {
