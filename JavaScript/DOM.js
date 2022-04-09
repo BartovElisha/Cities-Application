@@ -54,6 +54,10 @@ function generateCityCard(city,cityIndex) {
     let template =
                 `<div id="col-card-${cityIndex}" class="col my-2 hide-city-card">`+
                     `<div class="card city-card shadow-lg" style="width: 18rem;">`+
+                        `<div class="toast-header">`+
+                            `<strong class="me-auto">City Card: ${city.cityName}</strong>`+
+                            `<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick="closeCity(${cityIndex})"></button>`+
+                        `</div>`+
                         `<img src="./Images/lotte-world-tower-1791802_640.jpg" class="card-img-top img-thumbnail" alt="...">`+
                         `<div class="card-body">`+
                             `<div class="row">`+
@@ -150,5 +154,12 @@ function removeSearchDataList() {
         let cityNameElement = document.getElementById(`city-name-${i}`);
         cityNameElement.remove();
         i++;
+    }
+}
+
+function closeCity(cityIndex) {
+    if(document.getElementById(`col-card-${cityIndex}`)) {
+        let cityCardElement = document.getElementById(`col-card-${cityIndex}`);
+        cityCardElement.remove();    
     }
 }

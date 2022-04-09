@@ -145,7 +145,6 @@ function deleteAllCities(citiesArr) {
             cityToDelete = getCityData(citiesArr[i]);
             deleteCity(cityToDelete);
         }
-        alert("All Cities are Deleted");
     }
     else {
         alert("Cities Not Deleted");
