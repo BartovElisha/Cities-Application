@@ -56,7 +56,7 @@ function generateCityCard(city,cityIndex) {
                     `<div class="card city-card shadow-lg" style="width: 18rem;">`+
                         `<div class="toast-header">`+
                             `<strong class="me-auto">City Card: ${city.cityName}</strong>`+
-                            `<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" onclick="closeCity(${cityIndex})"></button>`+
+                            `<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" ondblclick="closeCity(${cityIndex})"></button>`+
                         `</div>`+
                         `<img src="./Images/lotte-world-tower-1791802_640.jpg" class="card-img-top img-thumbnail" alt="...">`+
                         `<div class="card-body">`+
