@@ -53,10 +53,9 @@ function generateCityCard(city,cityIndex) {
 
     let template =
                 `<div id="col-card-${cityIndex}" class="col my-2 hide-city-card">`+
-                    `<div class="card city-card" style="width: 18rem;">`+
-                        //`<img src="..." class="card-img-top img-thumbnail" alt="...">`+
+                    `<div class="card city-card shadow-lg" style="width: 18rem;">`+
                         `<img src="./Images/lotte-world-tower-1791802_640.jpg" class="card-img-top img-thumbnail" alt="...">`+
-                        `<div class="card-body shadow">`+
+                        `<div class="card-body">`+
                             `<div class="row">`+
                                 `<div class="col">`+
                                     `<h6 class="card-title">City:</h6>`+
