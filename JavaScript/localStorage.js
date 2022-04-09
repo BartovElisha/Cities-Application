@@ -39,6 +39,23 @@ function saveCityData(city) {
     localStorage.setItem(city.cityName,JSON.stringify(city));
 }
 
+function deleteCityCounter() {
+    localStorage.removeItem('citiesCounter');
+}
+
+function deleteCity(city) {
+    let citiesCounter = getCitiesCounter();
+
+    if(citiesCounter == 0) {
+        deleteCityCounter();    
+        return;
+    }
+
+    localStorage.removeItem(city.cityName);
+    citiesCounter--;
+    saveCityCounter(citiesCounter);
+}
+
 function getCityData(key) {
     return JSON.parse(localStorage.getItem(key));
 }

@@ -28,7 +28,7 @@
                     </a>
 
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" class="nav-link px-2 text-secondary">Welcome to Application City</a></li>
+                        <li><a href="#" class="nav-link px-2 text-secondary">Welcome to City Application</a></li>
                     </ul>
 
                     <!-- Search City Section -->
@@ -43,7 +43,29 @@
                             onclick="searchCity(getCitiesList())">Search</button>
                     </form>
 
-                    <!-- Drop down -->
+                    <!-- Filter Drop down -->
+                    <div class="dropdown mx-2">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Filter
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#" onclick="filterCities(getCitiesList(),'Visited')">Show
+                                    Visited Cities</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="filterCities(getCitiesList(),'Want to Visit')">Show
+                                    Cities to Visit</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="filterCities(getCitiesList(),'Do Not Visit')">Show
+                                    Cities to Not
+                                    Visit</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Menu Drop down -->
                     <div class="dropdown mx-2">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -56,22 +78,13 @@
                             <li><a class="dropdown-item" href="#" onclick="sortCitiesZa(getCitiesList())">Sort Cities
                                     Z..A</a>
                             </li>
-                            <li><a class="dropdown-item" href="#" onclick="filterCities(getCitiesList(),'Visited')">Show
-                                    Visited Cities</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="filterCities(getCitiesList(),'Want to Visit')">Show Cities to Visit</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="filterCities(getCitiesList(),'Do Not Visit')">Show Cities to Not
-                                    Visit</a>
-                            </li>
                             <li><a class="dropdown-item" href="#" onclick="hideAllCities(getCitiesList())">Hide
                                     Cities</a>
                             </li>
                             <li><a class="dropdown-item" href="#" onclick="showAllCities(getCitiesList())">Show
                                     Cities</a>
-                            <li><a class="dropdown-item" href="#" onclick="removeAllCities()">Delete All Cities</a>
+                            <li><a class="dropdown-item" href="#" onclick="deleteAllCities(getCitiesList())">Delete All
+                                    Cities</a>
                             </li>
                         </ul>
                     </div>
@@ -154,7 +167,7 @@
         <!-- Cities Cards -->
         <br>
         <div class="container">
-            <div id="cities-container" class="row row-cols-4 border-top">
+            <div id="cities-container" class="row row-cols-3 border-top">
                 <!-- Cities container will be fill by JavaScript Code -->
                 <!-- ....... -->
                 <!-- <div id="col-card-${index}" class="col hide-city-card">

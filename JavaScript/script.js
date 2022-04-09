@@ -67,6 +67,7 @@ function sortCitiesZa(citiesArr) {
     showAllCities(tempArr);
 }
 
+// Callback functions for filter
 function filterVisitedCities(city) {
     if(city.visitStatus === "Visited") {
        return true; 
@@ -94,31 +95,25 @@ function filterCities(citiesArr,filter) {
     }
 
     let fullCitiesArr = [];
-    
+    let filteredArray = [];
+
     for(let i = 0;i < citiesArr.length;i++) {
         let city = new City();
         city = getCityData(citiesArr[i]);
         fullCitiesArr[i] = city;
-    }
-
-    debugger;
-
-    let filteredArray = [];
+    }    
 
     switch(filter) {
         case 'Visited':
             filteredArray = fullCitiesArr.filter(filterVisitedCities);
-            console.log(filteredArray);
             break;
         
         case 'Want to Visit':
             filteredArray = fullCitiesArr.filter(filterWantToVisitCities);
-            console.log(filteredArray);
             break;
         
         case 'Do Not Visit':
             filteredArray = fullCitiesArr.filter(filterDoNotVisitCities);
-            console.log(filteredArray);
             break;
 
         default:
@@ -134,17 +129,31 @@ function filterCities(citiesArr,filter) {
     }
 }
 
-function removeAllCities() {
+function deleteAllCities(citiesArr) {
+    if(citiesArr == false) {
+        alert("No Cities to Remove");
+        return;
+    }
+ 
     if(confirm("Are you Shure ?")) {
-        alert("Yes");
+        let cityToDelete = new City(); 
+
+        removeAllCitieasCardsElements();
+        removeSearchDataList();
+
+        for(let i = 0;i <= citiesArr.length;i++) {
+            cityToDelete = getCityData(citiesArr[i]);
+            deleteCity(cityToDelete);
+        }
+        alert("All Cities are Deleted");
     }
     else {
-        alert("Not");
+        alert("Cities Not Deleted");
+        return;
     }
 }
 
 function searchCity(citiesArr) {
-    debugger;
     if(citiesArr == false) {
         return;
     }
@@ -163,6 +172,18 @@ function searchCity(citiesArr) {
     generateCityCard(city,0);
 
     showCityCard(0);
+}
+
+function updateCityColor(cityIndex) {
+    let updatedCity = new City();
+    let cityName = document.getElementById(`city-${cityIndex}`).textContent;
+
+    updatedCity = getCityData(cityName);
+
+    updatedCity.cityColor = document.getElementById(`city-color-${cityIndex}`).value;
+
+    saveCityData(updatedCity);
+    alert(`City Color of ${cityName} was Updated`);
 }
 
 // Init

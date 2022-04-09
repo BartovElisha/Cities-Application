@@ -53,7 +53,7 @@ function generateCityCard(city,cityIndex) {
 
     let template =
                 `<div id="col-card-${cityIndex}" class="col my-2 hide-city-card">`+
-                    `<div class="card city-card" style="width: 15rem;">`+
+                    `<div class="card city-card" style="width: 18rem;">`+
                         //`<img src="..." class="card-img-top img-thumbnail" alt="...">`+
                         `<img src="./Images/lotte-world-tower-1791802_640.jpg" class="card-img-top img-thumbnail" alt="...">`+
                         `<div class="card-body shadow">`+
@@ -62,7 +62,7 @@ function generateCityCard(city,cityIndex) {
                                     `<h6 class="card-title">City:</h6>`+
                                 `</div>`+
                                 `<div class="col">`+
-                                    `<span>${city.cityName}</span>`+
+                                    `<span id="city-${cityIndex}">${city.cityName}</span>`+
                                 `</div>`+
                             `</div>`+
                             `<div class="row">`+
@@ -99,10 +99,10 @@ function generateCityCard(city,cityIndex) {
                             `</div>`+
                             `<div class="row">`+
                                 `<div class="col">`+
-                                    `<button type="button" class="btn btn-secondary">Update</button>`+
+                                    `<button type="button" class="btn btn-secondary" onclick="updateCityColor(${cityIndex})">Update</button>`+
                                 `</div>`+
                                 `<div class="col">`+
-                                    `<input type="color" class="form-control form-control-color" id="city-color"
+                                    `<input type="color" class="form-control form-control-color" id="city-color-${cityIndex}"
                                         value="${city.cityColor}" title="Choose your color">`+
                                 `</div>`+
                             `</div>`+
